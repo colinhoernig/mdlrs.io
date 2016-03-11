@@ -1,0 +1,99 @@
+{{ partial "header.html" . }}
+{{ $baseurl := .Site.BaseURL }}
+
+{{$author := index .Site.Data.authors (or .Params.author .Site.Params.author)}}
+{{$authorname := or $author.name .Site.Params.author }}
+{{$authorbio := or $author.bio .Site.Params.bio }}
+{{$authorlocation := or $author.location .Site.Params.authorlocation }}
+{{$authorwebsite := or $author.website .Site.Params.authorwebsite }}
+{{$authorthumbnail := or $author.thumbnail .Site.Params.logo }}
+
+{{if .Params.image}}
+<header class="main-header post-head" style="background-image: url({{ $baseurl }}{{.Params.image}})">
+  <nav class="main-nav overlay clearfix">
+{{else}}
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+{{end}}
+
+  {{ if .Site.Params.logo }}
+      <a class="blog-logo" href="{{.Site.BaseURL}}"><img src="{{.Site.BaseURL}}{{ .Site.Params.logo }}" alt="Home" /></a>
+  {{end}}
+  {{ if .Site.Menus.main }}
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  {{else}}
+      <a class="menu-button icon-feed" href="{{ .Site.BaseURL }}index.xml">&nbsp;&nbsp;Subscribe</a>
+  {{end}}
+  </nav>
+
+  {{if .Params.image}}
+  <div class="vertical">
+      <div class="main-header-content inner">
+          <h1 class="page-title">{{.Title}}</h1>
+          <h2 class="page-description">
+              {{if .Description}}
+                  {{.Description}}
+              {{end}}
+          </h2>
+
+          <section class="post-meta">
+          {{ if eq .Section "post"}}
+              {{ .Date.Format "January 2 2006" }}
+          {{end}}
+           {{ range .Params.tags }}
+            <span class="post-tag small"><a href="{{ $baseurl }}tags/{{ . | urlize }}/">#{{ . }}</a></span>
+           {{ end }}
+          </section>
+      </div>
+  </div>
+  {{end}}
+</header>
+
+
+
+<main class="content" role="main">
+
+  <article class="post {{ .Section }} full">
+    {{ if not .Params.image }}
+    <header class="post-header">
+        <h1 class="post-title">{{.Params.title}}</h1>
+        <small>{{.Params.description}}</small>
+
+        <section class="post-meta">
+        {{ if eq .Section "post"}}
+            {{ .Date.Format "January 2 2006" }}
+        {{end}}
+         {{ range .Params.tags }}
+          <span class="post-tag small"><a href="{{ $baseurl }}tags/{{ . | urlize }}/">#{{ . }}</a></span>
+         {{ end }}
+        </section>
+    </header>
+    {{ end }}
+
+    <section class="post-content">
+      {{ .Content }}
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    {{ if not .Params.noauthor }}
+      {{ if $author }}
+        <figure class="author-image">
+            <img src="{{ $baseurl }}{{$authorthumbnail}}" alt="{{$authorname}}'s Avatar" class="img">
+        </figure>
+      {{end}}
+    {{end}}
+
+    {{ partial "author.html" . }}
+
+    {{ partial "share.html" . }}
+
+    {{ partial "disqus.html" . }}
+
+  </footer>
+</article>
+
+</main>
+{{ partial "footer.html" . }}

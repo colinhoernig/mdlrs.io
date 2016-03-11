@@ -1,0 +1,24 @@
+baseurl: http://mdlrs.io/
+languageCode: en-us
+title: Music Dealers Tech Blog
+theme: "md-blog"
+canonifyurls: true
+paginate: 10
+DisqusShortname: "mdlrsio"
+metaDataFormat: "yaml"
+
+params:
+  description: "A compilation of thoughts, ideas, and experiences from Music Dealers' Engineers"
+  cover: "images/main-hero.jpg"
+  logo: "images/md-logo-light-bg-large.png"
+  googleAnalytics: "UA-9466637-9"
+  githubName: "musicdealers"
+
+# menu:
+#   main:
+#     - name: "Meet the Team"
+#       identifier: "meet-the-team"
+#       url: "/meet-the-team"
+#     - name: "Open Source"
+#       identifier: "open-source"
+#       url: "/open-source"

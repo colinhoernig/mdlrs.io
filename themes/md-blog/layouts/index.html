@@ -1,0 +1,66 @@
+{{ partial "header.html" . }}
+
+{{if .Site.Params.cover}}
+<header class="main-header " style="background-image: url({{.Site.BaseURL}}{{.Site.Params.cover}})">
+{{else}}
+<header class="main-header no-cover">
+{{end}}
+
+    <nav class="main-nav overlay clearfix">
+        {{ if .Site.Params.logo }}
+            <a class="blog-logo" href="{{ .Site.BaseURL }}" title="Beam me up, Scotty!"><img src="{{.Site.BaseURL}}{{ .Site.Params.logo }}" alt="Music Dealers Logo" /></a>
+        {{end}}
+        {{ if .Site.Menus.main }}
+            <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+        {{else}}
+            {{ if .Site.Params.RSSLink}}
+              <a class="menu-button icon-feed" href="{{.Site.Params.RSSLink }}">&nbsp;&nbsp;Subscribe</a>
+            {{else}}
+              <a class="menu-button icon-feed" href="{{ .RSSLink }}">&nbsp;&nbsp;Subscribe</a>
+            {{end}}
+        {{end}}
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">{{ .Site.Title }}</h1>
+            <h2 class="page-description">{{ .Site.Params.description }}</h2>
+        </div>
+    </div>
+</header>
+
+
+<main id="content" class="content" role="main">
+
+    {{ range .Data.Pages }}
+        {{if eq .Type "index" }}
+        <div class="index-content post">
+        {{.Content}}
+        </div>
+        {{end}}
+    {{ end }}
+
+    {{ if not ($.Scratch.Get "paginatedSections") }}
+        {{ if isset .Site.Params "paginatedSections" }}
+            {{ $.Scratch.Set "paginatedSections" .Site.Params.paginatedSections }}
+        {{ else }}
+            {{ $.Scratch.Set "paginatedSections" "post" }}
+        {{ end }}
+    {{ end }}
+
+    {{ $list := where .Data.Pages "Section" "in" ($.Scratch.Get "paginatedSections") }}
+    {{ $list := where $list "Section" "!=" "" }}
+    {{ $paginator := .Paginate ( $list ) }}
+
+    <div class="extra-pagination inner">
+        {{ partial "pagination.html" $paginator }}
+    </div>
+
+    {{ range $index, $page := $paginator.Pages }}
+        {{ partial "li.html" . }}
+    {{ end }}
+
+    {{ partial "pagination.html" $paginator }}
+
+</main>
+
+{{ partial "footer.html" . }}
