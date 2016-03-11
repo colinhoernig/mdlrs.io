@@ -14,6 +14,10 @@ params:
   googleAnalytics: "UA-9466637-9"
   githubName: "musicdealers"
 
+blackfriday:
+  extensions:
+    - hardLineBreak
+
 # menu:
 #   main:
 #     - name: "Meet the Team"

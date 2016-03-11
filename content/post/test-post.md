@@ -1,9 +1,9 @@
 ---
-author: ""
+author: "colin-hoernig"
 comments: true
 date: 2016-03-10T13:26:35-06:00
 draft: false
-image: "/images/main-hero.jpg"
+image: "images/main-hero.jpg"
 menu: ""
 share: true
 slug: this-is-a-test
@@ -12,7 +12,6 @@ tags:
 - "JavaScript"
 - "UI/UX"
 title: This Is A Fake Post Title
-author: "colin-hoernig"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis dolorum quod, autem, commodi voluptatum quos. Aut vitae quia excepturi dicta modi, ipsam magni! Tempore consectetur, sapiente. Doloribus sapiente quisquam provident.

@@ -28,7 +28,7 @@
 
   {{if .Params.image}}
   <div class="vertical">
-      <div class="main-header-content inner">
+      <div class="main-header-content inner post-header">
           <h1 class="page-title">{{.Title}}</h1>
           <h2 class="page-description">
               {{if .Description}}
@@ -38,7 +38,7 @@
 
           <section class="post-meta">
           {{ if eq .Section "post"}}
-              {{ .Date.Format "January 2 2006" }}
+              {{ .Date.Format "January 2 2006" }}<br />
           {{end}}
            {{ range .Params.tags }}
             <span class="post-tag small"><a href="{{ $baseurl }}tags/{{ . | urlize }}/">#{{ . }}</a></span>
