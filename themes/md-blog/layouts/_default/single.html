@@ -30,11 +30,6 @@
   <div class="vertical">
       <div class="main-header-content inner post-header">
           <h1 class="page-title">{{.Title}}</h1>
-          <h2 class="page-description">
-              {{if .Description}}
-                  {{.Description}}
-              {{end}}
-          </h2>
 
           <section class="post-meta">
           {{ if eq .Section "post"}}
@@ -56,8 +51,7 @@
   <article class="post {{ .Section }} full">
     {{ if not .Params.image }}
     <header class="post-header">
-        <h1 class="post-title">{{.Params.title}}</h1>
-        <small>{{.Params.description}}</small>
+        <h1 class="post-title">{{.Title}}</h1>
 
         <section class="post-meta">
         {{ if eq .Section "post"}}
