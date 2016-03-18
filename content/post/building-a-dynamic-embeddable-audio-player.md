@@ -403,6 +403,6 @@ Building an embeddable, dynamic audio player allows us to easily share our artis
 
 If you made it this far, thanks for reading.  I hope that you enjoyed it.
 
-As previously mentioned, keep an eye out for a future blog post by Matthew, our Lead Developer, covering how this blog was built.
+As previously mentioned, keep an eye out for a future blog post by Matthew, our Lead Developer, covering how the new [Music Dealers Blog](http://www.musicdealers.com/blog) was built.
 
 <script src="//mdlrs.com/widgets/md-player/md-player-1.0.js"></script>
